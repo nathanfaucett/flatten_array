@@ -1,6 +1,14 @@
 var isArray = require("is_array");
 
 
+module.exports = flattenArray;
+
+
+function flattenArray(array, depth) {
+    depth = depth != null ? (depth <= -1 ? -1 : depth) : -1;
+    return depth === -1 ? flattenArrayNoDepth(array, []) : flattenArrayDepth(array, depth, []);
+}
+
 function flattenArrayNoDepth(array, result) {
     var localIsArray = isArray,
         i = -1,
@@ -38,9 +46,3 @@ function flattenArrayDepth(array, depth, result) {
 
     return result;
 }
-
-
-module.exports = function flattenArray(array, depth) {
-    depth = depth != null ? (depth <= -1 ? -1 : depth) : -1;
-    return depth === -1 ? flattenArrayNoDepth(array, []) : flattenArrayDepth(array, depth, []);
-};
