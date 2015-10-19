@@ -1,11 +1,16 @@
-var isArray = require("is_array");
+var clamp = require("clamp"),
+    isArray = require("is_array"),
+    isNumber = require("is_number");
+
+
+var MAX_SAFE_INTEGER = Math.pow(2, 53) - 1;
 
 
 module.exports = flattenArray;
 
 
 function flattenArray(array, depth) {
-    depth = depth != null ? (depth <= -1 ? -1 : depth) : -1;
+    depth = clamp(isNumber(depth) ? +depth : -1, -1, MAX_SAFE_INTEGER);
     return depth === -1 ? flattenArrayNoDepth(array, []) : flattenArrayDepth(array, depth, []);
 }
 
