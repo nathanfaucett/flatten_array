@@ -1,6 +1,6 @@
-var clamp = require("clamp"),
-    isArray = require("is_array"),
-    isNumber = require("is_number");
+var clamp = require("@nathanfaucett/clamp"),
+    isArray = require("@nathanfaucett/is_array"),
+    isNumber = require("@nathanfaucett/is_number");
 
 
 var MAX_SAFE_INTEGER = Math.pow(2, 53) - 1;
